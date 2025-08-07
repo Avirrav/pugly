@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Official Polaris Design System Colors */
+    --background: 255 255 255; /* #ffffff - White */
+    --foreground: 33 43 54; /* #212b36 - Dark text */
+    --card: 255 255 255; /* #ffffff - White */
+    --card-foreground: 33 43 54; /* #212b36 - Text */
+    --popover: 255 255 255; /* #ffffff - White */
+    --popover-foreground: 33 43 54; /* #212b36 - Text */
+    --primary: 92 106 196; /* #5c6ac4 - Primary purple */
+    --primary-foreground: 255 255 255; /* #ffffff - White */
+    --secondary: 99 115 129; /* #637381 - Muted Text */
+    --secondary-foreground: 255 255 255; /* #ffffff - White */
+    --muted: 244 246 248; /* #f4f6f8 - Light Grey BG */
+    --muted-foreground: 99 115 129; /* #637381 - Muted Text */
+    --accent: 80 184 60; /* #50b83c - Success */
+    --accent-foreground: 255 255 255; /* #ffffff - White */
+    --destructive: 222 54 24; /* #de3618 - Critical */
+    --destructive-foreground: 255 255 255; /* #ffffff - White */
+    --border: 223 227 232; /* #dfe3e8 - Border */
+    --input: 223 227 232; /* #dfe3e8 - Border */
+    --ring: 92 106 196; /* #5c6ac4 - Primary purple */
+    --radius: 8px;
+  }
+
+  .dark {
+    --background: 17 24 39; /* #111827 - Gray 900 */
+    --foreground: 243 244 246; /* #f3f4f6 - Gray 100 */
+    --card: 45 55 72; /* #2d3748 */
+    --card-foreground: 237 242 247; /* #edf2f7 */
+    --popover: 45 55 72; /* #2d3748 */
+    --popover-foreground: 237 242 247; /* #edf2f7 */
+    --primary: 92 106 196; /* #5c6ac4 */
+    --primary-foreground: 255 255 255; /* #ffffff */
+    --secondary: 74 85 104; /* #4a5568 */
+    --secondary-foreground: 237 242 247; /* #edf2f7 */
+    --muted: 74 85 104; /* #4a5568 */
+    --muted-foreground: 160 174 192; /* #a0aec0 */
+    --accent: 80 184 60; /* #50b83c */
+    --accent-foreground: 255 255 255; /* #ffffff */
+    --destructive: 222 54 24; /* #de3618 */
+    --destructive-foreground: 255 255 255; /* #ffffff */
+    --border: 74 85 104; /* #4a5568 */
+    --input: 74 85 104; /* #4a5568 */
+    --ring: 92 106 196; /* #5c6ac4 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    /* Ensure proper mobile viewport */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /* Fix height for proper layout */
+    height: 100%;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Allow vertical scroll but prevent horizontal */
+    overflow-x: hidden;
+    overflow-y: hidden; /* Let the layout handle scrolling */
+    /* Improve mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent zoom on input focus on iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Ensure full height */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Ensure text is always visible */
+    color: rgb(33, 43, 54); /* Dark text color */
+  }
+
+  /* Ensure root element takes full height */
+  #__next {
+    height: 100%;
+  }
+
+  /* Ensure main content text is always visible */
+  main {
+    color: rgb(33, 43, 54) !important;
+  }
+
+  /* Fix text visibility in main content areas */
+  .main-content {
+    background-color: rgb(255, 255, 255);
+    color: rgb(33, 43, 54);
+  }
+
+  /* Ensure headings are visible */
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(33, 43, 54) !important;
+  }
+
+  /* Ensure paragraphs and text are visible */
+  p, span, div {
+    color: inherit;
+  }
+
+  /* Fix muted text to be more visible */
+  .text-muted-foreground {
+    color: rgb(99, 115, 129) !important;
+  }
+}
+
+/* Polaris-specific utility classes */
+@layer utilities {
+  .polaris-shadow {
+    box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05), 0 1px 1px 0 rgba(22, 29, 37, 0.1);
+  }
+  
+  .polaris-shadow-sm {
+    box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  }
+  
+  .polaris-shadow-md {
+    box-shadow: 0 4px 8px -2px rgba(22, 29, 37, 0.1), 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  }
+  
+  .polaris-shadow-lg {
+    box-shadow: 0 8px 16px -4px rgba(22, 29, 37, 0.1), 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  }
+  
+  .polaris-shadow-inset {
+    box-shadow: inset 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  }
+
+  .polaris-focus {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  .polaris-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Theme-aware scrollbar styling */
+  .theme-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(223, 227, 232) transparent; /* Light border color for track */
+  }
+
+  .theme-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .theme-scrollbar::-webkit-scrollbar-track {
+    background: rgb(250, 251, 251); /* Very light surface color */
+    border-radius: 4px;
+  }
+
+  .theme-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(223, 227, 232); /* Light border color */
+    border-radius: 4px;
+    border: 2px solid rgb(250, 251, 251); /* Creates padding effect */
+  }
+
+  .theme-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(99, 115, 129); /* Muted text color on hover */
+  }
+
+  .theme-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: rgb(92, 106, 196); /* Primary color when active */
+  }
+
+  .theme-scrollbar::-webkit-scrollbar-corner {
+    background: rgb(250, 251, 251);
+  }
+
+  /* Dark theme scrollbar */
+  .dark .theme-scrollbar {
+    scrollbar-color: rgb(74, 85, 104) transparent;
+  }
+
+  .dark .theme-scrollbar::-webkit-scrollbar-track {
+    background: rgb(45, 55, 72);
+  }
+
+  .dark .theme-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(74, 85, 104);
+    border: 2px solid rgb(45, 55, 72);
+  }
+
+  .dark .theme-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(160, 174, 192);
+  }
+
+  .dark .theme-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: rgb(92, 106, 196);
+  }
+
+  .dark .theme-scrollbar::-webkit-scrollbar-corner {
+    background: rgb(45, 55, 72);
+  }
+
+  /* Apply theme scrollbar to main content areas */
+  .main-content-scroll {
+    @apply theme-scrollbar;
+  }
+
+  /* Ensure text visibility utilities */
+  .text-visible {
+    color: rgb(33, 43, 54) !important;
+  }
+
+  .text-visible-muted {
+    color: rgb(99, 115, 129) !important;
+  }
+
+  /* Main content area styling */
+  .content-area {
+    background-color: rgb(255, 255, 255);
+    color: rgb(33, 43, 54);
+  }
+
+  .content-area * {
+    color: inherit;
+  }
+}
+
+/* Remove neobrutalism styles */
+.neo-shadow,
+.neo-border,
+.neo-btn {
+  box-shadow: none;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+}
+
+/* Polaris-style animations */
+.animate-polaris-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-polaris-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* Typography improvements */
+.polaris-text-heading {
+  @apply text-heading font-semibold text-foreground;
+  color: rgb(33, 43, 54) !important;
+}
+
+.polaris-text-subheading {
+  @apply text-subheading font-semibold text-foreground;
+  color: rgb(33, 43, 54) !important;
+}
+
+.polaris-text-body {
+  @apply text-body text-foreground;
+  color: rgb(33, 43, 54) !important;
+}
+
+.polaris-text-caption {
+  @apply text-caption text-muted-foreground;
+  color: rgb(99, 115, 129) !important;
+}
+
+/* Form improvements */
+.polaris-form-field {
+  @apply space-y-2;
+}
+
+.polaris-form-label {
+  @apply text-subheading font-medium text-foreground;
+  color: rgb(33, 43, 54) !important;
+}
+
+.polaris-form-help {
+  @apply text-caption text-muted-foreground;
+  color: rgb(99, 115, 129) !important;
+}
+
+.polaris-form-error {
+  @apply text-caption text-destructive font-medium;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  /* Fix viewport height issues on mobile */
+  .h-screen {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  }
+  
+  /* Ensure proper scrolling on mobile */
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden; /* Let layout handle scrolling */
+    position: relative;
+  }
+  
+  /* Fix mobile layout issues */
+  .overflow-hidden {
+    overflow-x: hidden;
+  }
+  
+  /* Mobile-friendly spacing */
+  .p-8 {
+    @apply p-4;
+  }
+  
+  .pt-6 {
+    @apply pt-4;
+  }
+  
+  .px-6 {
+    @apply px-4;
+  }
+  
+  /* Mobile table improvements */
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent text from being too small on mobile */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+  
+  /* Fix mobile button sizes */
+  button {
+    min-height: 44px; /* iOS recommended touch target */
+  }
+}
+
+/* Responsive grid improvements */
+@media (max-width: 640px) {
+  .grid-cols-3 {
+    @apply grid-cols-1;
+  }
+  
+  .md\:grid-cols-3 {
+    @apply grid-cols-1;
+  }
+  
+  .grid-cols-2 {
+    @apply grid-cols-1;
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+  .w-56 {
+    @apply w-full;
+  }
+  
+  .rounded-t-3xl {
+    @apply rounded-t-lg;
+  }
+  
+  /* Ensure mobile menu is accessible */
+  .md\:hidden {
+    display: block !important;
+  }
+  
+  .hidden.md\:block {
+    display: none !important;
+  }
+}
+
+/* Fix mobile modal and overlay issues */
+@media (max-width: 768px) {
+  .fixed {
+    position: fixed !important;
+  }
+  
+  /* Ensure modals work properly on mobile */
+  [data-radix-portal] {
+    z-index: 9999;
+  }
+}
+
+/* Improve mobile touch targets */
+@media (max-width: 768px) {
+  a, button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
